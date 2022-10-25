@@ -8,28 +8,24 @@ public class RadioNumber {
     private final char[] numberDic = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     public boolean isUsed(String number) {
-        ArrayList<String> callSignNumber = new ArrayList<String>();
+        ArrayList<String> callSignNumber = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Radio/CallSign" +
                 "/RadioNumber/StationNumbers.txt"))) {
             while ((reader.readLine()) != null) {
-                if (!reader.readLine().isEmpty()) {
-                    callSignNumber.add(reader.readLine());
-                }
+                callSignNumber.add(reader.readLine());
             }
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         try {
             for (String s : callSignNumber) {
-                if (s.equalsIgnoreCase(number)) {
+                if (s.equalsIgnoreCase("") || s.equalsIgnoreCase(" ") || s.equalsIgnoreCase(number)) {
                     return true;
                 }
             }
         } catch (NullPointerException ex) {
-            System.out.println("NPE ex");
+            ex.printStackTrace();
         }
-
         return false;
     }
 
@@ -50,11 +46,11 @@ public class RadioNumber {
         String returnable = "";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Radio/CallSign" +
                 "/RadioNumber/StationNumbers.txt", true))) {
-            {
-                returnable = genNumber();
-                writer.write(returnable);
-                writer.newLine();
-            }
+            returnable = genNumber();
+            writer.write(returnable);
+            writer.newLine();
+            writer.flush();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }

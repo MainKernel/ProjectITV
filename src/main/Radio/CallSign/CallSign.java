@@ -8,9 +8,7 @@ import java.util.Random;
 
 
 public class CallSign {
-    private File notUsedCallSigns = new File("src/main/Radio/CallSign/callSigns.txt");
-    private final File usedCallSigns = new File("src/main/Radio/CallSign/usedCallSigns.txt");
-    private ArrayList<String> SignList = new ArrayList<>();
+    private ArrayList<String> signList = new ArrayList<>();
 
 
     public boolean isUsed(String callSigne){
@@ -34,7 +32,7 @@ public class CallSign {
             while ((line = reader.readLine()) != null) {
                 String tmp = reader.readLine();
                 if(tmp != null){
-                    SignList.add(tmp.toUpperCase());
+                    signList.add(tmp.toUpperCase());
                 }
             }
 
@@ -46,12 +44,11 @@ public class CallSign {
     public String createCallSigne(){
         readCallSign();
         String result = "";
-        int rand = new Random().nextInt(SignList.size());
-        result = SignList.get(rand);
-        SignList.remove(rand);
+        int rand = new Random().nextInt(signList.size());
+        result = signList.get(rand);
+        signList.remove(rand);
         result += "-" + new RadioNumber().getNum();
 
-        System.out.println("sign = " + result);
         return result;
     }
 
