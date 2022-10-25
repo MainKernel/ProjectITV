@@ -1,4 +1,4 @@
-package MyProject.Dictionary;
+package Dictionary.PassGen;
 
 import java.util.Random;
 
