@@ -1,7 +1,9 @@
 package Users;
 
-import MyProject.Dictionary.PasswordGenerator;
-import MyProject.Dictionary.UserNameDictionary;
+
+import Dictionary.PassGen.PasswordGenerator;
+import Dictionary.PassGen.UserNameDictionary;
+
 import java.io.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;

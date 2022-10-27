@@ -80,7 +80,7 @@ public class AdminCreator {
         String password;
             switch (passOption) {
                 case 1:
-                    passwordArray = new MyProject.Dictionary.PasswordGenerator().strongPassword(10);
+                    passwordArray = new Dictionary.PassGen.PasswordGenerator().strongPassword(10);
                     password = passwordArray[new Random().nextInt(10 + 1)];
                     this.password = password;
                     break;
@@ -89,7 +89,7 @@ public class AdminCreator {
                     break;
                 default:
                     System.out.println("You choice the wrong option, password will be created by default");
-                    passwordArray = new MyProject.Dictionary.PasswordGenerator().commonPassword(10);
+                    passwordArray = new Dictionary.PassGen.PasswordGenerator().commonPassword(10);
                     password = passwordArray[new Random().nextInt(10 + 1)];
                     this.password = password;
                     break;
